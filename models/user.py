@@ -1,18 +1,17 @@
-from email.policy import default
 from db import db
 from datetime import datetime
 
 
-class user(db.Model):
+class User(db.Model):
     __tablename__ = 'users'
     
-    id = db.Column(db.Integer)
+    id = db.Column(db.Integer,primary_key = True)
     firstname = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100) ,nullable=False, unique = True)
     country = db.Column(db.String(100))
-    date_joined = db.Column(db.Datetime , default = datetime.utcnow)
+    date_joined = db.Column(db.DateTime, default = datetime.utcnow)
     blog_points = db.Column(db.Integer, default = 0)
     
     
